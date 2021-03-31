@@ -12,6 +12,7 @@ import Constants from '../constants';
 import {decode as atob, encode as btoa} from 'base-64';
 import analytics from '@react-native-firebase/analytics';
 import Logger from '../helper/Logger';
+import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 
 const deviceDemo = {
   id: "demo-123",
@@ -45,7 +46,7 @@ class WifiSetupPage extends React.Component {
   constructor() {
     super();
     this.manager = new BleManager();
-    console.log("wifi setup page init");
+    
     this.state = {
       devices: [],
       connected: {},
@@ -58,6 +59,28 @@ class WifiSetupPage extends React.Component {
   }
 
   componentDidMount() {
+    check(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL)
+    .then((result) => {
+      switch (result) {
+        case RESULTS.GRANTED:
+          Logger.logInfo("wsp_permission_granted", JSON.stringify(result));
+          this.handleBleStateChange();
+          break;
+        default:
+          request(PERMISSIONS.IOS.BLUETOOTH_PERIPHERAL).then((result) => {
+            Logger.logInfo("wsp_request_permission_granted", JSON.stringify(result));
+            if (result === RESULTS.GRANTED) {
+              this.handleBleStateChange();
+            }
+          });
+      }
+    })
+    .catch((error) => {
+      Logger.logInfo("wsp_request_permission_error", JSON.stringify(error));
+    });
+  }
+
+  handleBleStateChange() {
     const subscription = this.manager.onStateChange(async (state) => {
       Logger.logInfo("wsp_ble_manager_state_change", state);
       if (state === 'PoweredOn') {
