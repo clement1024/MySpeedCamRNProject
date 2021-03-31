@@ -53,5 +53,7 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+  <string>MySpeedCamApp wants to use your bluetooth to setup wireless connection to the camera.</string>
 </dict>
 </plist>
