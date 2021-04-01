@@ -10,7 +10,6 @@ import { BleManager } from 'react-native-ble-plx';
 import Button from '../components/Button';
 import Constants from '../constants';
 import {decode as atob, encode as btoa} from 'base-64';
-import analytics from '@react-native-firebase/analytics';
 import Logger from '../helper/Logger';
 import {check, request, PERMISSIONS, RESULTS} from 'react-native-permissions';
 

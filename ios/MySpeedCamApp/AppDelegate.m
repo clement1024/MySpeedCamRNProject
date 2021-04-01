@@ -1,3 +1,4 @@
+@import Firebase;
 #import "AppDelegate.h"
 
 #import <React/RCTBridge.h>
@@ -30,6 +31,8 @@ static void InitializeFlipper(UIApplication *application) {
 #ifdef FB_SONARKIT_ENABLED
   InitializeFlipper(application);
 #endif
+  
+  [FIRApp configure];
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
@@ -49,7 +52,8 @@ static void InitializeFlipper(UIApplication *application) {
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
 #if DEBUG
-  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+//  return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
+  return [NSURL URLWithString:@"http://127.0.0.1:8081/index.ios.bundle?platform=ios&dev=true"];
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
 #endif

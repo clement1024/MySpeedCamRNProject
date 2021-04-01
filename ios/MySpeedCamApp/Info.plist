@@ -28,6 +28,10 @@
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
+		<key>NSAllowsArbitraryLoadsInWebContent</key>
+		<true/>
+		<key>NSAllowsLocalNetworking</key>
+		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>localhost</key>
@@ -37,6 +41,10 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>NSBluetoothAlwaysUsageDescription</key>
+	<string>MySpeedCamApp wants to use your bluetooth to setup wireless connection to the camera.</string>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+	<string>MySpeedCamApp wants to use your bluetooth to setup wireless connection to the camera.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string></string>
 	<key>UILaunchStoryboardName</key>
@@ -53,7 +61,5 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
-	<key>NSBluetoothAlwaysUsageDescription</key>
-  <string>MySpeedCamApp wants to use your bluetooth to setup wireless connection to the camera.</string>
 </dict>
 </plist>

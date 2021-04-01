@@ -10,7 +10,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@react-native-firebase/analytics": "^11.2.0",
     "@react-native-firebase/app": "^11.2.0",
     "@react-native-firebase/firestore": "^11.2.0",
     "@react-native-masked-view/masked-view": "^0.2.3",
